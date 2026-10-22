@@ -173,7 +173,7 @@ footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
 <section id="talk">
   <div class="chapter"><div class="no">SKILL 01</div><h2>語り系動画のAI編集</h2><p>話している動画を、あなたの編集の型で仕上げる</p></div>
 
-  <div class="video" data-video="talk"><div class="wait">解説動画（約1分）は準備中です</div></div>
+  <div class="video" data-video="talk"><div class="wait">解説動画（1分41秒）</div></div>
 
   <div class="card">
     <h3>できること</h3>
@@ -211,7 +211,7 @@ footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
 <section id="zukai">
   <div class="chapter"><div class="no">SKILL 02</div><h2>図解解説動画</h2><p>顔を出さずに、図解とAIの声で伝える</p></div>
 
-  <div class="video" data-video="zukai"><div class="wait">解説動画（約1分）は準備中です</div></div>
+  <div class="video" data-video="zukai"><div class="wait">解説動画（1分20秒）</div></div>
 
   <div class="card">
     <h3>できること</h3>
@@ -248,7 +248,7 @@ footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
 <section id="pv">
   <div class="chapter"><div class="no">SKILL 03</div><h2>PV動画</h2><p>告知の内容と画像から、30秒の動画を作る</p></div>
 
-  <div class="video" data-video="pv"><div class="wait">解説動画（約1分）は準備中です</div></div>
+  <div class="video" data-video="pv"><div class="wait">解説動画（1分10秒）</div></div>
 
   <div class="card">
     <h3>できること</h3>
@@ -308,11 +308,11 @@ footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
 </footer>
 
 <script>
-/* 公開時に値を入れる。空の間はボタンを押せない状態のまま。 */
+/* ZIPはDrive、解説動画は同じ公開場所の videos/ に置く。空の値はボタンを押せない状態のまま。 */
 const ASSETS = {
-  talk:  {zip:"https://drive.usercontent.google.com/download?id=1AYiyfUkuuUXkO9T3uUpim3Lh8ZWb-Jic&export=download", size:"約4.2MB", video:""},
-  zukai: {zip:"https://drive.usercontent.google.com/download?id=1ZA4mJ4FHblXAC5UPmHUY8rQmVG-wFeUx&export=download", size:"約13.6MB", video:""},
-  pv:    {zip:"https://drive.usercontent.google.com/download?id=1LCKQXgao2T9-bLIsD71_j9rpN6JhS3PG&export=download", size:"約9.6MB", video:""}
+  talk:  {zip:"https://drive.usercontent.google.com/download?id=1AYiyfUkuuUXkO9T3uUpim3Lh8ZWb-Jic&export=download", size:"約4.2MB", video:"videos/talk.mp4", poster:"videos/talk.jpg"},
+  zukai: {zip:"https://drive.usercontent.google.com/download?id=1ZA4mJ4FHblXAC5UPmHUY8rQmVG-wFeUx&export=download", size:"約13.6MB", video:"videos/zukai.mp4", poster:"videos/zukai.jpg"},
+  pv:    {zip:"https://drive.usercontent.google.com/download?id=1LCKQXgao2T9-bLIsD71_j9rpN6JhS3PG&export=download", size:"約9.6MB", video:"videos/pv.mp4", poster:"videos/pv.jpg"}
 };
 for (const [k,v] of Object.entries(ASSETS)) {
   const a = document.querySelector('[data-dl="'+k+'"]');
@@ -323,7 +323,7 @@ for (const [k,v] of Object.entries(ASSETS)) {
   if (v.video && box) {
     box.innerHTML = '';
     const el = document.createElement('video');
-    el.src = v.video; el.controls = true; el.preload = 'metadata'; el.playsInline = true;
+    el.src = v.video; if (v.poster) el.poster = v.poster; el.controls = true; el.preload = 'metadata'; el.playsInline = true;
     box.appendChild(el);
   }
 }
