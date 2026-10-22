@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>動画作成スキル3種 配布ページ</title>
+<meta name="description" content="軽井沢合宿の参加者向けに、Claude Code で使う動画作成スキル3種（語り系動画の編集・図解解説動画・PV動画）を配布するページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Shippori+Mincho:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7EEDC; --paper-light:#FFF8EA; --card:#FFFFFF; --grid:#EAD9B8;
+  --ink:#1E1A16; --ink-soft:#5A4F44; --muted:#9A8D7C;
+  --orange:#F26A1B; --gold:#F5B321; --navy:#2A2F3A; --red2:#D7262E;
+  --dark:#141216; --dark-ink:#F4EDE2; --shadow:rgba(90,50,10,.18);
+  --grad:linear-gradient(90deg,#F26A1B 0%,#F5B321 100%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(120% 80% at 50% 0%,var(--paper-light) 0%,var(--paper) 60%,#EFE2C8 100%) fixed;color:var(--ink);
+  font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;line-height:1.85;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--orange)}
+img,video{max-width:100%;display:block}
+.wrap{max-width:920px;margin:0 auto;padding:0 16px}
+
+/* ヘッダー */
+.hero{padding:56px 0 40px;text-align:center}
+.tag{display:inline-block;background:var(--dark);color:var(--dark-ink);font-weight:700;font-size:13px;letter-spacing:.08em;padding:6px 14px;border-radius:4px}
+.hero h1{margin:18px 0 10px;font-weight:900;font-size:clamp(28px,6vw,46px);line-height:1.35}
+.hero h1 .em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;padding-right:.1em}
+.hero p.lead{margin:0 auto;max-width:640px;color:var(--ink-soft);font-size:17px}
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:32px 0 0}
+.toc a{display:block;text-decoration:none;color:var(--ink);background:var(--card);border-radius:12px;padding:16px 14px;box-shadow:0 6px 18px var(--shadow);text-align:left}
+.toc a small{display:block;color:var(--orange);font-weight:700;font-size:12px;letter-spacing:.06em}
+.toc a b{display:block;font-size:17px;line-height:1.5;margin-top:4px}
+.toc a span{display:block;color:var(--ink-soft);font-size:13px;line-height:1.6;margin-top:6px}
+
+/* 見出し帯 */
+.band{display:inline-block;background:var(--orange);color:#FFF8EA;font-weight:900;font-size:clamp(19px,3.6vw,24px);padding:6px 18px;border-radius:4px;margin:0 0 18px}
+.band.dark{background:var(--dark)}
+section{padding:40px 0}
+
+/* 章カード */
+.chapter{position:relative;overflow:hidden;background:var(--dark);color:var(--dark-ink);border-radius:14px;padding:34px 24px 28px;text-align:center;margin:0 0 24px;
+  background-image:
+    linear-gradient(90deg,transparent 0 46px,rgba(215,38,46,.35) 46px 48px,transparent 48px),
+    linear-gradient(0deg,transparent 0 30px,rgba(215,38,46,.28) 30px 32px,transparent 32px);
+  background-size:140px 100%,100% 90px;background-position:0 0,0 0}
+.chapter::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 50%,rgba(20,18,22,.15) 0%,rgba(20,18,22,.85) 100%)}
+.chapter>*{position:relative;z-index:1}
+.chapter .no{color:var(--orange);font-weight:900;font-size:14px;letter-spacing:.14em}
+.chapter h2{font-family:"Shippori Mincho",serif;font-weight:800;font-size:clamp(26px,5.4vw,40px);margin:6px 0 4px;text-shadow:0 0 18px rgba(242,106,27,.55)}
+.chapter p{margin:0;color:#D9CFC2;font-size:15px}
+
+/* カード */
+.card{background:var(--card);border-radius:14px;padding:22px 22px;box-shadow:0 8px 24px var(--shadow);margin:0 0 18px}
+.card h3{margin:0 0 10px;font-size:19px;font-weight:900;display:flex;align-items:center;gap:10px}
+.card h3::before{content:"";width:6px;height:22px;background:var(--grad);border-radius:3px;flex:none}
+.card p{margin:0 0 10px}
+.card p:last-child{margin-bottom:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.point{background:var(--paper-light);border:2px solid var(--grid);border-radius:12px;padding:16px}
+.point b{display:block;color:var(--orange);font-size:13px;letter-spacing:.06em}
+.point strong{display:block;font-size:17px;margin:2px 0 6px;line-height:1.5}
+.point p{margin:0;color:var(--ink-soft);font-size:14.5px;line-height:1.75}
+
+/* 流れ */
+ol.flow{list-style:none;margin:0;padding:0;counter-reset:f}
+ol.flow li{counter-increment:f;position:relative;padding:12px 0 12px 54px;border-bottom:1px dashed var(--grid)}
+ol.flow li:last-child{border-bottom:0}
+ol.flow li::before{content:counter(f);position:absolute;left:0;top:12px;width:38px;height:38px;border-radius:50%;background:var(--dark);color:var(--dark-ink);font-weight:900;display:grid;place-items:center}
+ol.flow li b{display:block}
+ol.flow li span{color:var(--ink-soft);font-size:14.5px}
+
+/* 動画 */
+.video{position:relative;border-radius:12px;overflow:hidden;background:var(--dark);box-shadow:0 10px 28px var(--shadow);margin:0 0 18px;aspect-ratio:16/9}
+.video video{width:100%;height:100%;object-fit:contain;background:var(--dark)}
+.video .wait{position:absolute;inset:0;display:grid;place-items:center;color:var(--dark-ink);font-weight:700;text-align:center;padding:16px}
+
+/* ダウンロード */
+.dl{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;background:var(--dark);color:var(--dark-ink);border-radius:14px;padding:20px 22px;margin:0 0 18px}
+.dl .meta{flex:1 1 260px;font-size:14px;color:#D9CFC2}
+.dl .meta b{display:block;color:var(--dark-ink);font-size:17px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:var(--grad);color:#1E1A16;font-weight:900;font-size:17px;padding:14px 24px;border-radius:999px;box-shadow:0 6px 16px rgba(242,106,27,.35)}
+.btn:hover{filter:brightness(1.05)}
+.btn[aria-disabled="true"]{background:#5A4F44;color:#D9CFC2;box-shadow:none;pointer-events:none}
+
+table.req{width:100%;border-collapse:collapse;font-size:14.5px}
+table.req th,table.req td{border-bottom:1px solid var(--grid);padding:9px 8px;text-align:left;vertical-align:top}
+table.req th{color:var(--ink-soft);font-weight:700;white-space:nowrap}
+code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--paper);border:1px solid var(--grid);border-radius:6px;padding:1px 6px;font-size:.92em;word-break:break-all}
+.say{display:block;background:var(--paper-light);border-left:5px solid var(--orange);border-radius:6px;padding:10px 14px;margin:8px 0;font-weight:700}
+
+/* チェックリスト */
+ul.check{list-style:none;margin:0;padding:0}
+ul.check li{position:relative;padding:8px 0 8px 36px}
+ul.check li::before{content:"";position:absolute;left:0;top:10px;width:22px;height:22px;border-radius:6px;background:var(--orange);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 3h18v18H3z' fill='%23000'/%3E%3C/svg%3E");}
+ul.check li::after{content:"";position:absolute;left:7px;top:14px;width:8px;height:12px;border:solid #FFF8EA;border-width:0 3px 3px 0;transform:rotate(45deg)}
+
+details{background:var(--card);border-radius:12px;padding:14px 18px;box-shadow:0 6px 18px var(--shadow);margin:0 0 12px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0;color:var(--ink-soft)}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:720px){
+  .toc,.grid3,.grid2{grid-template-columns:1fr}
+  .hero{padding:40px 0 24px}
+  section{padding:28px 0}
+  .card{padding:18px 16px}
+  .dl{padding:18px 16px}
+  .btn{width:100%;justify-content:center}
+  table.req th{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">軽井沢合宿 2026.11.10–12 参加特典</span>
+    <h1>Claude Code で使う<br><span class="em">動画作成スキル3種</span></h1>
+    <p class="lead">語り系動画の編集、図解解説動画、30秒のPV動画を作るスキルです。ZIPを入れて「セットアップして」と伝えると、パソコンの確認、足りない物の案内、テスト出力まで進みます。Codex でも使えます。</p>
+    <nav class="toc" aria-label="スキル一覧">
+      <a href="#talk"><small>SKILL 01</small><b>語り系動画のAI編集</b><span>話している動画を、自分の編集の型でカット・テロップ・効果音まで入れる</span></a>
+      <a href="#zukai"><small>SKILL 02</small><b>図解解説動画</b><span>顔を出さずに、図解とAIの声で解説動画を作る</span></a>
+      <a href="#pv"><small>SKILL 03</small><b>PV動画</b><span>告知の内容と画像から、30秒のPV動画を作る</span></a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="common">
+  <h2 class="band">3本に共通する入れ方</h2>
+
+  <div class="card">
+    <h3>入れる前に用意する物</h3>
+    <table class="req">
+      <tr><th>パソコン</th><td>Mac または Windows</td></tr>
+      <tr><th>Claude Code<br>または Codex</th><td>Claude Code はデスクトップアプリかターミナル版のどちらか。Codex でも同じスキルが動きます</td></tr>
+      <tr><th>そのほか</th><td>スキルごとに必要な物（ffmpeg・Node.js・Python のライブラリなど）は、セットアップの中で確認して案内します。先に入れておく必要はありません。Premiere Pro と Gemini の APIキーは、無くても使えます</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>入れ方（3つ）</h3>
+    <ol class="flow">
+      <li><b>ZIPをダウンロードする</b><span>各スキルの「ZIPをダウンロード」ボタンから保存します。</span></li>
+      <li><b>ZIPを Claude Code に渡して、こう伝える</b>
+        <span class="say">このZIPをスキルとして入れて、セットアップして</span>
+        <span>Claude Code が解凍して、スキルの置き場所（Mac は <code>~/.claude/skills/</code>、Windows は <code>C:\Users\自分の名前\.claude\skills\</code>）へ置きます。Codex の場合は <code>~/.codex/skills/</code> です。自分で置く場合も、この場所へ解凍したフォルダごと入れ、Claude Code / Codex を開き直します。</span></li>
+      <li><b>案内に沿って進める</b><span>足りない物があれば、入れてよいかを聞いてから入れます。APIキーの入力やアプリの購入など、自分で行う所は手順を1つずつ案内します。</span></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>セットアップで行うこと</h3>
+    <div class="grid2">
+      <div class="point"><b>01 確認</b><strong>パソコンの中を調べる</strong><p>必要なアプリ・ツール・APIキーがあるか、版が足りているかを一覧で出します。</p></div>
+      <div class="point"><b>02 自動で入れる</b><strong>入れてよいか聞いてから入れる</strong><p>Homebrew・winget・npm で入る物は、了承をもらってから入れます。</p></div>
+      <div class="point"><b>03 案内する</b><strong>自分で行う所は手順を出す</strong><p>Homebrew の初回導入や APIキーの発行など、自分で操作する所は1つずつ案内します。APIキーは画面に表示せずに保存します。</p></div>
+      <div class="point"><b>04 テスト出力</b><strong>短い動画を1本書き出す</strong><p>書き出した動画の長さと中身を確かめて、使える状態になったかを判定します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILL 01 ===== -->
+<section id="talk">
+  <div class="chapter"><div class="no">SKILL 01</div><h2>語り系動画のAI編集</h2><p>話している動画を、あなたの編集の型で仕上げる</p></div>
+
+  <div class="video" data-video="talk"><div class="wait">解説動画（約1分）は準備中です</div></div>
+
+  <div class="card">
+    <h3>できること</h3>
+    <div class="grid3">
+      <div class="point"><b>01</b><strong>カット</strong><p>長い間、「えー」などのつなぎ言葉、言い直しを見つけて切ります。</p></div>
+      <div class="point"><b>02</b><strong>テロップと効果音</strong><p>文字起こしからテロップと効果音を入れ、音量をそろえます。文字起こしはパソコンの中だけで行うので、APIキーは要りません。</p></div>
+      <div class="point"><b>03</b><strong>自分の型を覚える</strong><p>自分の Premiere のプロジェクトか、自分の完成動画から、テロップの位置・大きさ・色・カットの間を読み取って案を出します。了承した物だけが保存されます。</p></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)">作れる動画の見本: <a href="https://www.youtube.com/watch?v=8uIIv2nYfhk&amp;t=460s" target="_blank" rel="noopener">語り系動画（YouTube）</a></p>
+  </div>
+
+  <div class="card">
+    <h3>入れると変わること</h3>
+    <p>自分の型を一度覚えさせると、次の動画からその型で編集されます。直してほしい所を伝えれば、その内容が記録され、次の編集から反映されます。編集にかかる時間を短縮できると、発信を続けやすくなります。</p>
+    <p>書き出しは、完成した mp4 と、Premiere で開いて手直しできるファイルの両方です。仕上げだけ自分の手で整えることもできます。</p>
+  </div>
+
+  <div class="card">
+    <h3>使い方の流れ</h3>
+    <ol class="flow">
+      <li><b>自分の型を渡す</b><span>自分で編集した Premiere のプロジェクトか、自分の完成動画を渡します。YouTube に上げた動画は、YouTube Studio から自分の動画をダウンロードして渡します。他人の動画は材料にしません。</span></li>
+      <li><b>型を確認する</b><span>「今の値 → 案」と根拠の一覧を見て、了承した物だけを保存します。</span></li>
+      <li><b>撮った動画を渡す</b><span>「この動画を編集して」と伝えます。どこを切るかの案を一緒に見直してから書き出します。</span></li>
+      <li><b>直してほしい所を伝える</b><span>毎回同じになる意見は、了承を取って型に足します。次の編集から反映されます。</span></li>
+    </ol>
+  </div>
+
+  <div class="dl">
+    <div class="meta"><b>talk-video-ai-editor</b><span data-meta="talk">ZIP（準備中）</span></div>
+    <a class="btn" data-dl="talk" href="#" aria-disabled="true">ZIPをダウンロード</a>
+  </div>
+</section>
+
+<!-- ===== SKILL 02 ===== -->
+<section id="zukai">
+  <div class="chapter"><div class="no">SKILL 02</div><h2>図解解説動画</h2><p>顔を出さずに、図解とAIの声で伝える</p></div>
+
+  <div class="video" data-video="zukai"><div class="wait">解説動画（約1分）は準備中です</div></div>
+
+  <div class="card">
+    <h3>できること</h3>
+    <div class="grid3">
+      <div class="point"><b>01</b><strong>要望を聞いて台本を作る</strong><p>誰に何を伝えるか、長さや縦横を聞き取り、台本を出します。</p></div>
+      <div class="point"><b>02</b><strong>15秒の見本を先に見せる</strong><p>見た目を確かめてから全編に進みます。</p></div>
+      <div class="point"><b>03</b><strong>見た目を選べる</strong><p>色は5種類から選べます。自分の写真、効果音、声も選べます。選んだ内容は保存されます。</p></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)">作れる動画の見本: <a href="https://utagesystem.s3.ap-northeast-1.wasabisys.com/e0gIDvcOZAAg/7wIUrd11UEKG.mp4" target="_blank" rel="noopener">図解動画（動画ファイルが開きます）</a></p>
+  </div>
+
+  <div class="card">
+    <h3>入れると変わること</h3>
+    <p>台本、図、声、効果音を一人でそろえる手間がなくなります。声は Gemini の読み上げを使うので、自分で話して録る必要はありません。Gemini の APIキーが無い時は、Mac の読み上げか声なしでも作れます。一度選んだ色・写真・効果音は保存されるので、2本目以降も同じ見た目で作れます。</p>
+  </div>
+
+  <div class="card">
+    <h3>使い方の流れ</h3>
+    <ol class="flow">
+      <li><b>「解説動画を作りたい」と伝える</b><span>テーマ、見てほしい人、長さ、縦か横かを聞かれるので答えます。</span></li>
+      <li><b>台本を確認する</b><span>画面に出す文字と読み上げの文が表で出ます。直したい所を伝えます。</span></li>
+      <li><b>15秒の見本を見る</b><span>色・写真・効果音・声を決めます。</span></li>
+      <li><b>全編を書き出す</b><span>書き出した動画の長さと音量を確かめて渡されます。</span></li>
+    </ol>
+  </div>
+
+  <div class="dl">
+    <div class="meta"><b>zukai-explainer-video</b><span data-meta="zukai">ZIP（準備中）</span></div>
+    <a class="btn" data-dl="zukai" href="#" aria-disabled="true">ZIPをダウンロード</a>
+  </div>
+</section>
+
+<!-- ===== SKILL 03 ===== -->
+<section id="pv">
+  <div class="chapter"><div class="no">SKILL 03</div><h2>PV動画</h2><p>告知の内容と画像から、30秒の動画を作る</p></div>
+
+  <div class="video" data-video="pv"><div class="wait">解説動画（約1分）は準備中です</div></div>
+
+  <div class="card">
+    <h3>できること</h3>
+    <div class="grid3">
+      <div class="point"><b>01</b><strong>企画を3案出す</strong><p>何の告知か、誰に向けるか、使う画像から、方向の違う3案を出します。</p></div>
+      <div class="point"><b>02</b><strong>秒ごとの台本を作る</strong><p>何秒に何を出すかを、文字の台本で決めます。</p></div>
+      <div class="point"><b>03</b><strong>書き出しと検品</strong><p>Remotion で書き出し、秒数や文字の切れを確かめます。APIキーも有料サービスも使いません。</p></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:14.5px;color:var(--ink-soft)">作れる動画の見本: <a href="https://x.com/osaruproducer/status/2105644399250276373" target="_blank" rel="noopener">PV動画（X）</a></p>
+  </div>
+
+  <div class="card">
+    <h3>入れると変わること</h3>
+    <p>実際に30秒のPVを作った時の手順と、直して分かったこと（動きの速さ・音の大きさ・検品で見る所）をスキルの中に入れてあります。色・文字・動き・音を先に文字で決めて確認してから書き出すので、出来上がってから全部作り直すことが減ります。</p>
+  </div>
+
+  <div class="card">
+    <h3>使い方の流れ</h3>
+    <ol class="flow">
+      <li><b>告知の内容と画像を渡す</b><span>日時・対象・伝えたいこと・使いたい画像を渡します。</span></li>
+      <li><b>企画を1つ選ぶ</b><span>3案から選び、直したい所を伝えます。</span></li>
+      <li><b>秒ごとの台本と見た目を確認する</b><span>色・文字・動き・音を文字で確認します。</span></li>
+      <li><b>書き出しを受け取る</b><span>1920×1080 の mp4 が書き出され、検品の結果と一緒に渡されます。</span></li>
+    </ol>
+  </div>
+
+  <div class="dl">
+    <div class="meta"><b>promo-pv-video</b><span data-meta="pv">ZIP（準備中）</span></div>
+    <a class="btn" data-dl="pv" href="#" aria-disabled="true">ZIPをダウンロード</a>
+  </div>
+</section>
+
+<section id="done">
+  <h2 class="band dark">入れ終わったら確認</h2>
+  <div class="card">
+    <ul class="check">
+      <li>ZIPを入れた</li>
+      <li>「セットアップして」と伝えた</li>
+      <li>テスト出力の動画を見た</li>
+      <li>自分の素材を1つ渡した</li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="band">うまく進まない時</h2>
+  <details><summary>セットアップの途中で止まった</summary><p>Claude Code に「セットアップの続きをして」と伝えます。すでに入った物は飛ばして、足りない物だけ案内します。</p></details>
+  <details><summary>スキルが呼ばれない</summary><p>フォルダの置き場所を確認します。<code>~/.claude/skills/スキル名/SKILL.md</code> の形になっているかを Claude Code に確認してもらうのが早いです。置いた後は Claude Code を開き直します。</p></details>
+  <details><summary>APIキーをどこに入れればよいか分からない</summary><p>APIキーが要るのは、図解解説動画で Gemini の声を使う時だけです。セットアップの中で、ターミナルで実行するコマンドを案内します。貼り付けた値は画面に表示されず、作業フォルダの <code>.env</code> に保存されます。チャットにAPIキーを貼らないでください。</p></details>
+  <details><summary>Windows で使えるか</summary><p>セットアップの中で、Windows 用の入れ方（winget など）を案内します。動作の確認は Mac で行いました。Windows で止まった時は、表示をそのまま Claude Code に見せてください。</p></details>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">軽井沢合宿（2026年11月10日〜12日）参加者向けの配布ページです。ZIPとこのページのURLは、参加者以外へ再配布しないでください。</div>
+</footer>
+
+<script>
+/* 公開時に値を入れる。空の間はボタンを押せない状態のまま。 */
+const ASSETS = {
+  talk:  {zip:"https://drive.usercontent.google.com/download?id=1AYiyfUkuuUXkO9T3uUpim3Lh8ZWb-Jic&export=download", size:"約4.2MB", video:""},
+  zukai: {zip:"https://drive.usercontent.google.com/download?id=1ZA4mJ4FHblXAC5UPmHUY8rQmVG-wFeUx&export=download", size:"約13.6MB", video:""},
+  pv:    {zip:"https://drive.usercontent.google.com/download?id=1LCKQXgao2T9-bLIsD71_j9rpN6JhS3PG&export=download", size:"約9.6MB", video:""}
+};
+for (const [k,v] of Object.entries(ASSETS)) {
+  const a = document.querySelector('[data-dl="'+k+'"]');
+  const m = document.querySelector('[data-meta="'+k+'"]');
+  if (v.zip && a) { a.href = v.zip; a.removeAttribute('aria-disabled'); a.setAttribute('rel','noopener'); }
+  if (v.size && m) m.textContent = 'ZIP ' + v.size;
+  const box = document.querySelector('[data-video="'+k+'"]');
+  if (v.video && box) {
+    box.innerHTML = '';
+    const el = document.createElement('video');
+    el.src = v.video; el.controls = true; el.preload = 'metadata'; el.playsInline = true;
+    box.appendChild(el);
+  }
+}
+</script>
+</body>
+</html>
